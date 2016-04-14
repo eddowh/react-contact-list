@@ -15,6 +15,10 @@ var Contact = require('./Contact.jsx');
 
 var ContactList = React.createClass({
 
+    handleEdit: function(i, j) {
+        AppActions.editContact(i);
+    },
+
     handleRemove: function(i, j) {
         AppActions.removeContact(i);
     },
@@ -26,7 +30,7 @@ var ContactList = React.createClass({
                 <td>{this.props.contact.phone}</td>
                 <td>{this.props.contact.email}</td>
                 <td>
-                    <a className="btn btn-primary" href="#" onClick={this.handleEdit}>EDIT</a>
+                    <a className="btn btn-primary" href="#" onClick={this.handleEdit.bind(this, this.props.contact)}>EDIT</a>
                     &nbsp;
                     <a className="btn btn-danger" href="#" onClick={this.handleRemove.bind(this, this.props.contact.id)}>REMOVE</a>
                 </td>
