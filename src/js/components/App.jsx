@@ -5,8 +5,12 @@
 
 var React = require('react');
 
+// Flux elements
 var AppActions = require('../actions/AppActions');
 var AppStore = require('../stores/AppStore');
+
+// Components
+var AddForm = require('./AddForm.jsx');
 
 
 function getAppState() {
@@ -14,6 +18,7 @@ function getAppState() {
 
     };
 }
+
 
 var App = React.createClass({
 
@@ -37,7 +42,7 @@ var App = React.createClass({
     render: function() {
         return (
             <div>
-                Hello World!
+                <AddForm />
             </div>
         );
     }
