@@ -1,6 +1,6 @@
 # Project Description
 
-An application that allows you to add, update, and delete contacts and persist data to Firebase.
+An application that allows you to add, update, and delete contacts and persist data to [Firebase](https://www.firebase.com/).
 
 # What You Will Learn
 
