@@ -48,6 +48,9 @@ AppDispatcher.register(function(payload) {
             // Store save
             AppStore.saveContact(action.contact);
 
+            // Save to API
+            AppAPI.saveContact(action.contact);
+
             // Emit change
             AppStore.emit(CHANGE_EVENT);
 
