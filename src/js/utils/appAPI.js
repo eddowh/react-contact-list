@@ -7,20 +7,21 @@ var AppActions = require('../actions/AppActions');
 
 // Constants
 var FIREBASE_BASE_LINK = 'https://contact-list-dev0.firebaseio.com/';
+var FIREBASE_CONTACTS_LINK = FIREBASE_BASE_LINK + 'contacts';
 
 
 // list of actions that are available
 module.exports = {
 
     saveContact: function(contact) {
-        this.firebaseRef = new Firebase(FIREBASE_BASE_LINK + 'contacts');
+        this.firebaseRef = new Firebase(FIREBASE_CONTACTS_LINK);
         this.firebaseRef.push({
             contact: contact
         });
     },
 
     getContacts: function() {
-        this.firebaseRef = new Firebase(FIREBASE_BASE_LINK + 'contacts');
+        this.firebaseRef = new Firebase(FIREBASE_CONTACTS_LINK);
 
         /* we will have an object returned, but we want it as an array
          * so we will loop/map through the object and then create it an array
@@ -39,5 +40,11 @@ module.exports = {
                 AppActions.receiveContacts(contacts);
             });
         });
+    },
+
+    removeContact: function(contactId) {
+        this.firebaseRef = new Firebase(FIREBASE_CONTACTS_LINK + '/' + contactId);
+        this.firebaseRef.remove();
     }
+
 }
