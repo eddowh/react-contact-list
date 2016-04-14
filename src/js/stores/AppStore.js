@@ -5,22 +5,20 @@ var AppAPI = require('../utils/appAPI.js');
 var AppConstants = require('../constants/AppConstants');
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 
+
 var CHANGE_EVENT = 'change';
 
-// define where to store your fetched data
-// initialize as empty
-// var obj = [] | {} | ''
+var _contacts = [];
 
 
 var AppStore = assign({}, EventEmitter.prototype, {
 
-    // define getter and setter methods
-    setObj: function(argument) {
-        return;
+    saveContact: function(contact) {
+        _contacts.push(contact);
     },
 
-    getObj: function() {
-        return;
+    getContacts: function() {
+        return _contacts;
     },
 
     emitChange: function() {
@@ -44,8 +42,16 @@ AppDispatcher.register(function(payload) {
 
     switch (action.actionType) {
 
-        // case AppConstants.A_CONSTANT:
-        // ...
+        case AppConstants.SAVE_CONTACT:
+            console.log('Saving contact...');
+
+            // Store save
+            AppStore.saveContact(action.contact);
+
+            // Emit change
+            AppStore.emit(CHANGE_EVENT);
+
+            break;
 
     }
 

@@ -1,3 +1,3 @@
 module.exports = {
-    CONSTANT: 'CONSTANT'
+    SAVE_CONTACT: 'SAVE_CONTACT'
 }
